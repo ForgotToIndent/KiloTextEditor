@@ -103,7 +103,7 @@ void editorDrawRows(struct abuf *ab){
     for (y = 0; y < E.screenrows; y++){
         if(y == E.screenrows/3){
             char welcome[80];
-            int welcomelen = sprintf(welcome, sizeof(welcome),
+            int welcomelen = snprintf(welcome, sizeof(welcome),
               "MiliX Editor -- version %s", MILIX_VERSION);
             if(welcomelen > E.screencols) welcomelen = E.screencols;
             int padding = (E.screencols - welcomelen) / 2;
@@ -116,7 +116,6 @@ void editorDrawRows(struct abuf *ab){
         } else{
             abAppend(ab, "~", 1);
         }
-        abAppend(ab "~", 1);
 
         abAppend(ab, "\x1b[K", 3);
         if(y < E.screenrows - 1){
