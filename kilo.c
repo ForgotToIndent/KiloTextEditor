@@ -55,9 +55,20 @@ char editorReadKey(){
 
 /*** output ***/
 
+void editorDrawsRows(){
+    int y;
+    for (y=0; y<24; y++){
+        write(STDOUT_FILENO, "~\r\n", 3); //draw tilde in each row like vim
+    }
+}
+
 void editorRefreshScreen(){
     write(STDOUT_FILENO, "\x1b[2J", 4); //clear the screen 'escape sequence' VT100
     write(STDOUT_FILENO, "\x1b[H", 3); //postion cursor 'H' which takes 2 argument eg.'12;40H'. we have left both empty so position the cursor to first row first column
+
+    editorDrawsRows();
+
+    write(STDOUT_FILENO, "\x1b[H", 3);
 }
 
 /*** input ***/
