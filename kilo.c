@@ -50,6 +50,13 @@ char editorReadKey(){
     return c;
 }
 
+/*** output ***/
+
+void editorRefreshScreen(){
+    write(STDOUT_FILENO, "\x1b[2J", 4); //clear the screen 'escape sequence' VT100
+    write(STDOUT_FILENO, "\x1b[H", 3); //postion cursor 'H' which takes 2 argument eg.'12;40H'. we have left both empty so position the cursor to first row first column
+}
+
 /*** input ***/
 
 void editorProcessKeypress(){
@@ -68,8 +75,9 @@ int main() { //main is default starting point
     enableRawMode();
 
     while (1) {
+        editorRefreshScreen();
         editorProcessKeypress();
     }
-    
+
     return 0; //a 0 returned indicated a success
 }
