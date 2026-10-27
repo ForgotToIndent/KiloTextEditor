@@ -11,7 +11,7 @@
 
 /*** defines ***/
 
-#define MILIX_VERSION "0.0.1"
+#define MILIX_VERSION "0.0.2"
 #define CTRL_KEY(k) ((k) & 0x1f)
 
 /*** data ***/
